@@ -4,8 +4,9 @@ import mysql.connector as connector
 
 db = connector.connect(host='localhost',
                        user='root',
-                       passwd='i_use_arch_btw')
+                       passwd='arch')
 c = db.cursor()
-c.execute("insert into STUDENT " + eval(input("Query: ")))
+c.execute("use mysql;")
+c.execute("insert into STUDENT " + input("Query: ") + ";")
 db.commit() 
 db.close()

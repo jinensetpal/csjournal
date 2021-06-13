@@ -6,10 +6,9 @@ l = []
 while True:
     option = int(input("1: Add\n2: Search\n3: Exit\nSelect: "))
     if option == 1:
-        l.append([int(input("Gr. No: ")), input("Name: "), int(input("Marks: "))])
+        l.append([int(input("Gr. No: ")), input("Name: "), input("Class: "), input("Section: ")])
     elif option == 2:
-        q = int(input("Query: "))
-        if len(list([print(i) for i in l if i[0] == q])) == 0:
+        if len(list([print(i) for i in l if i[0] == int(input("Query: "))])) == 0:
             print("Not found")
     else:
         with open('file.csv', 'w') as f:

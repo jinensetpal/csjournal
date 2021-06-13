@@ -1,3 +1,5 @@
+use mysql; -- maradb initialization
+
 create table STOCK(ItemNo int(4), Item varchar(50), DCode int(3), Qty int(3), UnitPrice int(2), StockDate date);
 insert into STOCK values(5005, 'Ball pen 0.5', 102, 100, 16, '2010-03-31');
 insert into STOCK values(5003, 'Ball pen 0.25', 102, 150, 20, '2010-01-01');
@@ -12,11 +14,11 @@ insert into Dealers values(101, 'Reliable Stationers');
 insert into Dealers values(103, 'Classic Plastics');
 insert into Dealers values(102, 'Clear Deals');
 
-select * from STOCK order by Item;
+select * from STOCK order by Item asc;
 select ItemNo, Item from STOCK where UnitPrice > 10;
 select * from STOCK where DCode = 102 || Qty > 100;
-select max(UnitPrice) from STOCK group by DCode;
-update STOCK set Qty += 50;
+select Item, max(UnitPrice) from STOCK group by DCode;
+update STOCK set Qty = Qty + 50;
 select Item from STOCK;
 select avg(Qty) from STOCK;
-select sum(Qty) from STOCK order by DCode;
+select DCode, count(Qty) from STOCK group by DCode;

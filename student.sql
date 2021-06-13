@@ -1,5 +1,6 @@
-create table STUDENT(No int(3), Name varchar(50), Stipend float(5,2), Stream varchar(20), AvgMark float(3,1), Grade char(1), Class char(3));
+use mysql; -- maradb initialization
 
+create table STUDENT(No int(3), Name varchar(50), Stipend float(5,2), Stream varchar(20), AvgMark float(3,1), Grade char(1), Class char(3));
 insert into STUDENT values('1.', 'Karan', 400.00, 'Medical', 78.5, 'B', '12B');
 insert into STUDENT values('2.', 'Mohit', 450.00, 'Comm.', 89.2, 'A', '11C');
 insert into STUDENT values('3.', 'Divya', 300.00, 'Comm.', 68.6, 'C', '12C');
@@ -12,9 +13,10 @@ insert into STUDENT values('9.', 'Bobby', 500.00, 'NMed', 92.0, 'A', '12A');
 insert into STUDENT values('10.', 'Abha', 300.00, 'Comm.', 67.5, 'C', '12C');
 
 select distinct(Stream) from STUDENT;
-select Name from STUDENT order by Stipend where Class = '12_';
+select Name from STUDENT where Class like '12_' order by Stipend;
 select * from STUDENT order by AvgMark desc;
 select Name, Stipend, Stream, Stipend * 12 as Amount from STUDENT;
-select sum(Grade) from STUDENT where Grade = 'A';
-select sum(Name) from STUDENT group by class;
-select sum(Grade) from STUDENT group by Stream where Grade = 'C';
+select count(Grade) from STUDENT where Grade = 'A';
+select Name, Class, max(AvgMark) from STUDENT group by Class;
+select Class, count(Name) from STUDENT group by Class;
+select Stream, count(Grade) from STUDENT where Grade = 'C' group by Stream;

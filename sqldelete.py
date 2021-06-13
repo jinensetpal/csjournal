@@ -4,9 +4,9 @@ import mysql.connector as connector
 
 db = connector.connect(host='localhost',
                        user='root',
-                       passwd='i_use_arch_btw')
+                       passwd='arch')
 c = db.cursor()
-c.execute("delete from STUDENT where No = " + input("No.: "))
+c.execute("use mysql;")
+c.execute("delete from STUDENT where No = \"" + input("No.: ") + "\";")
 db.commit() 
 db.close()
-
